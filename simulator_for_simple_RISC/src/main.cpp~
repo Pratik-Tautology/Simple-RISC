@@ -1,0 +1,56 @@
+/*
+
+  The project is developed as part of Computer Architecture class
+  Project Name: Functional/Pipeline Simulator for SimpleRISC Processor
+
+  Developer's Name: PRATHAM GUPTA , PRATIK CHHAJER
+  Developer's Email id: 2015csb1024@iitrpr.ac.in , 2015csb1025@iitrpr.ac.in
+  Date: 13th OCTOBER 2K16
+
+*/
+
+/* main.cpp
+   Purpose of this file: The file handles the input and output, and
+   invokes the simulator
+*/
+
+#include "mySimpleSim.h"
+#include <iostream>
+#include <cstdlib>
+
+using namespace std;
+
+int main(int argc, char** argv) {
+
+  if(argc < 2) {
+    cout<<"Incorrect number of arguments. Please invoke the simulator \n\t./mySimpleSim <input mem file> \n";
+    exit(1);
+  }
+
+  //reset the processor
+  reset_proc();
+  
+  //load the program memory
+  load_program_memory(argv[1]);
+
+  // *****************************************
+  /*
+    latch P;
+    latch Q;
+    P.instruction =  0x00000000;
+    Q.instruction =  0x49008000;
+    cout<<conflict(Q,P)<<endl;
+  */
+  // *****************************************
+	
+  
+  //run the simulator
+  //	run_simplesim();
+  run_pipeline();
+
+
+  // Write Programs memory
+  write_data_memory();
+   
+  return 1;
+}
